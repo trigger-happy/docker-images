@@ -11,6 +11,10 @@ matrix:
       env:
         - DOCKER_REPO=triggerhappy/commitlint
         - WORKING_DIR=commitlint
+    - os: linux
+      env:
+        - DOCKER_REPO=triggerhappy/auto-changelog
+        - WORKING_DIR=auto-changelog
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
