@@ -15,6 +15,10 @@ matrix:
       env:
         - DOCKER_REPO=triggerhappy/auto-changelog
         - WORKING_DIR=auto-changelog
+    - os: linux
+      env:
+        - DOCKER_REPO=triggerhappy/cppdev
+        - WORKING_DIR=cppdev
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
