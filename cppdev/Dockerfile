@@ -1,6 +1,5 @@
 FROM fedora:31 as base
 
-RUN useradd -mU builder
 RUN dnf -y update
 
 RUN dnf -y groupinstall "C Development Tools and Libraries" "Development Tools" && \
@@ -22,11 +21,17 @@ RUN dnf -y groupinstall "C Development Tools and Libraries" "Development Tools" 
     mv /root/.cargo/bin/grcov /usr/bin/grcov && \
     chmod a+rx /usr/bin/grcov
 
-RUN mkdir -p /app /src && chown builder:builder /app /src
+RUN mkdir -p /app /src
 
 VOLUME /app /src
 
 WORKDIR /src
-USER builder
+#RUN useradd -mU builder
+#USER builder
+#ENV PATH=$PATH:/home/builder/.local/bin
+
+RUN pip install conan && \
+    conan remote add conan-transit https://conan-transit.bintray.com && \
+    conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 
 CMD ["/bin/bash"]
