@@ -16,7 +16,8 @@ RUN dnf -y groupinstall "C Development Tools and Libraries" "Development Tools" 
       glibc-devel \
       make \
       llvm \
-      cargo && \
+      cargo \
+      python3-pip && \
     cargo install grcov && \
     mv /root/.cargo/bin/grcov /usr/bin/grcov && \
     chmod a+rx /usr/bin/grcov
