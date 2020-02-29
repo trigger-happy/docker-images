@@ -19,6 +19,10 @@ matrix:
       env:
         - DOCKER_REPO=triggerhappy/cppdev
         - WORKING_DIR=cppdev
+    - os: linux
+      env:
+        - DOCKER_REPO=triggerhappy/slatedocs
+        - WORKING_DIR=slatedocs
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
