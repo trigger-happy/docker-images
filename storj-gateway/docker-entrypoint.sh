@@ -9,6 +9,7 @@ if [[ ! -f "/config/config.yaml" ]]; then
     --minio.secret-key $MINIO_SECRET_KEY \
     --minio.dir /config/minio \
     --api-key $API_KEY \
+    --server.address 0.0.0.0:7777 \
     --satellite-addr $SATELLITE_ADDR
 fi
 
