@@ -23,6 +23,10 @@ matrix:
       env:
         - DOCKER_REPO=triggerhappy/slatedocs
         - WORKING_DIR=slatedocs
+    - os: linux
+      env:
+        - DOCKER_REPO=triggerhappy/storj-gateway
+        - WORKING_DIR=storj-gateway
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
