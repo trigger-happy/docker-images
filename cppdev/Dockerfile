@@ -1,5 +1,7 @@
 FROM fedora:31 as base
 
+ARG VCPKG_VERSION=2020.01
+
 RUN dnf -y update
 
 RUN dnf -y groupinstall "C Development Tools and Libraries" "Development Tools" && \
@@ -17,6 +19,7 @@ RUN dnf -y groupinstall "C Development Tools and Libraries" "Development Tools" 
       make \
       llvm \
       cargo \
+      which \
       python3-pip && \
     cargo install grcov && \
     mv /root/.cargo/bin/grcov /usr/bin/grcov && \
@@ -34,5 +37,14 @@ WORKDIR /src
 RUN pip install conan && \
     conan remote add conan-transit https://conan-transit.bintray.com && \
     conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+
+RUN cd / && \
+    git clone -b $VCPKG_VERSION https://github.com/microsoft/vcpkg.git && \
+    cd vcpkg && \
+    ./bootstrap-vcpkg.sh -disableMetrics && \
+    ./vcpkg integrate install && \
+    ./vcpkg integrate bash
+
+ENV PATH=$PATH:/vcpkg
 
 CMD ["/bin/bash"]
