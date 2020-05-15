@@ -1,6 +1,6 @@
-FROM fedora:31 as base
+FROM fedora:32 as base
 
-ARG VCPKG_VERSION=2020.01
+ARG VCPKG_VERSION=2020.04
 
 RUN dnf -y update
 
