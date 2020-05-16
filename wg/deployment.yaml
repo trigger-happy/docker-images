@@ -1,0 +1,71 @@
+# Sample deployment, modify to suit your needs. I'm using hostNetwork here
+# since this gets put into a cluster hosted on a provider without the usual
+# LoadBalancer stuff.
+#
+# Don't forget to create the secret containing the private key and the config
+# as a ConfigMap
+# ```
+# kubectl create configmap wg0-conf --from-file=wg0.conf
+# kubectl create secret generic wg0-key --from-file=wg0.key=privatekey
+# ```
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wireguard
+  labels:
+    app: wireguard
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: wireguard
+  template:
+    metadata:
+      labels:
+        app: wireguard
+    spec:
+      hostNetwork: true
+      nodeSelector:
+        # pin it to a specific node
+        kubernetes.io/hostname: node-name
+      restartPolicy: Always
+      volumes:
+        - name: wg0-key
+          secret:
+            secretName: wg0-key
+            defaultMode: 0600
+        - name: wg0-conf
+          configMap:
+            name: wg0-conf
+            defaultMode: 0600
+      containers:
+        - name: wireguard
+          image: triggerhappy/wg:latest
+          imagePullPolicy: Always
+          lifecycle:
+            postStart:
+              exec:
+                command: ["wg-quick",  "up", "wg0"]
+            preStop:
+              exec:
+                command: ["wg-quick",  "down", "wg0"]
+          volumeMounts:
+            - name: wg0-key
+              mountPath: /etc/wireguard/wg0.key
+              subPath: wg0.key
+              readOnly: true
+            - name: wg0-conf
+              mountPath: /etc/wireguard/wg0.conf
+              subPath: wg0.conf
+              readOnly: true
+          ports:
+            - containerPort: 48570
+              hostPort: 48570
+              protocol: UDP
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
