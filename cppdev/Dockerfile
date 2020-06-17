@@ -27,7 +27,7 @@ RUN dnf -y groupinstall "C Development Tools and Libraries" "Development Tools" 
 
 RUN mkdir -p /app /src
 
-VOLUME /app /src
+VOLUME /src
 
 WORKDIR /src
 #RUN useradd -mU builder
