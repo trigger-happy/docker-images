@@ -4,9 +4,9 @@ WORKDIR /app
 
 RUN apk update && apk add --update-cache curl
 
-ARG STORJ_VERSION=v1.6.3
+ARG STORJ_VERSION=v1.1.3
 
-RUN curl -L https://github.com/storj/storj/releases/download/$STORJ_VERSION/gateway_linux_amd64.zip -O && \
+RUN curl -L https://github.com/storj/gateway/releases/download/$STORJ_VERSION/gateway_linux_amd64.zip -O && \
     unzip gateway_linux_amd64.zip && \
     chmod 755 gateway && \
     mv gateway /usr/local/bin/gateway && \
