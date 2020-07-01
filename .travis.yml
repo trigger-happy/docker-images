@@ -25,10 +25,6 @@ matrix:
         - WORKING_DIR=slatedocs
     - os: linux
       env:
-        - DOCKER_REPO=triggerhappy/storj-gateway
-        - WORKING_DIR=storj-gateway
-    - os: linux
-      env:
         - DOCKER_REPO=triggerhappy/wg
         - WORKING_DIR=wg
 
