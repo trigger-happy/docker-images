@@ -27,6 +27,10 @@ matrix:
       env:
         - DOCKER_REPO=triggerhappy/wg
         - WORKING_DIR=wg
+    - os: linux
+      env:
+        - DOCKER_REPO=triggerhappy/docker-buildx
+        - WORKING_DIR=docker-buildx
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
