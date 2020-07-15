@@ -15,6 +15,6 @@ COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 
 # mlflow ui
-EXPOSE 8088
+EXPOSE 5000
 
 ENTRYPOINT ["/bin/bash"]
