@@ -1,6 +1,9 @@
 FROM nvidia/cuda:10.2-runtime-ubuntu18.04
 LABEL maintainer="choa.james@gmail.com"
 
+ENV LC_ALL=C.UTF-8 \
+    LANG=C.UTF-8
+
 RUN apt -y update && \
     apt -y upgrade && \
     apt -y install \
