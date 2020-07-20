@@ -11,7 +11,10 @@ RUN apt -y update && \
       python3-pip \
       build-essential \
       bash \
-      git
+      git && \
+    apt -y clean all && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
+    update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 10
 
 WORKDIR /src
 COPY requirements.txt .
