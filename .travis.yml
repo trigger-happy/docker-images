@@ -45,8 +45,8 @@ matrix:
         - WORKING_DIR=k8s-tools
     - os: linux
       env:
-        - DOCKER_REPO=triggerhappy/wrk
-        - WORKING_DIR=wrk
+        - DOCKER_REPO=triggerhappy/http-benchmarking
+        - WORKING_DIR=http-benchmarking
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
