@@ -25,4 +25,4 @@ ENV THREADS=1 \
     CONNECTIONS=1 \
     URL=http://localhost:8080/
 
-CMD ["wrk", "-t", "$THREADS", "-d", "$DURATION", "-c", "$CONNECTIONS", "$URL"]
+CMD ["/bin/sh", "-c", "wrk -t $THREADS -d $DURATION -c $CONNECTIONS $URL"]
