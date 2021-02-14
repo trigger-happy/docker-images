@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.3.1-gpu-jupyter
+FROM tensorflow/tensorflow:2.4.1-gpu-jupyter
 LABEL maintainer="choa.james@gmail.com"
 
 ENV LC_ALL=C.UTF-8 \
