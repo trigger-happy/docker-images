@@ -1,6 +1,8 @@
 FROM tensorflow/tensorflow:2.4.1-gpu-jupyter
 LABEL maintainer="choa.james@gmail.com"
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8
 
