@@ -9,6 +9,8 @@ RUN apt -y update && \
     apt -y install \
       libxrender1 \
       libxext6 \
+      python3-tk \
+      mesa-utils \
       libsm6 && \
     apt -y clean all
 
