@@ -47,6 +47,10 @@ matrix:
       env:
         - DOCKER_REPO=triggerhappy/http-benchmarking
         - WORKING_DIR=http-benchmarking
+    - os: linux
+      env:
+        - DOCKER_REPO=triggerhappy/mlflow-server
+        - WORKING_DIR=mlflow-server
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
