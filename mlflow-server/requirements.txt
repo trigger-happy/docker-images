@@ -1,2 +1,2 @@
-mlflow
+mlflow==1.14.1
 psycopg2
