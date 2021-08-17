@@ -51,6 +51,10 @@ matrix:
       env:
         - DOCKER_REPO=triggerhappy/mlflow-server
         - WORKING_DIR=mlflow-server
+    - os: linux
+      env:
+        - DOCKER_REPO=triggerhappy/wrk2
+        - WORKING_DIR=wrk2
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
