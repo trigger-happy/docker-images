@@ -1,4 +1,5 @@
 FROM archlinux:latest as base
+LABEL maintainer="choa.james@gmail.com"
 
 RUN pacman -Syu --noconfirm \
       gcc \

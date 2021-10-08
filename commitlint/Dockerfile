@@ -1,4 +1,5 @@
-FROM node:13.8.0-alpine
+FROM node:16.10.0-alpine3.14
+LABEL maintainer="choa.james@gmail.com"
 
 WORKDIR /app
 

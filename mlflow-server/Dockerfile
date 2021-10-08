@@ -1,4 +1,4 @@
-FROM python:3.9.3-buster as base
+FROM python:3.10.0-buster as base
 
 ENV BACKEND_STORE_URI=file:///data/mlruns \
     HOST=0.0.0.0 \

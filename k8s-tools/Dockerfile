@@ -1,4 +1,4 @@
-FROM alpine:3.12.0
+FROM alpine:3.14.2
 
 RUN apk update && \
     apk upgrade && \
@@ -13,8 +13,8 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s
     chmod a+x kubectl && \
     mv kubectl /usr/bin/kubectl
 
-RUN curl -JOL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.1/kustomize_v3.8.1_linux_amd64.tar.gz && \
-    tar xzf kustomize_v3.8.1_linux_amd64.tar.gz && \
+RUN curl -JOL https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.4.0/kustomize_v4.4.0_linux_amd64.tar.gz && \
+    tar xzf kustomize_v4.4.0_linux_amd64.tar.gz && \
     chmod a+x kustomize && \
     mv kustomize /usr/bin/kustomize
 

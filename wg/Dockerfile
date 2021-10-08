@@ -1,4 +1,4 @@
-FROM fedora:32
+FROM fedora:34
 LABEL maintainer="choa.james@gmail.com"
 
 RUN dnf -y update && \

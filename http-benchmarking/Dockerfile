@@ -1,4 +1,4 @@
-FROM alpine:3.12.0 as base
+FROM alpine:3.14.2 as base
 LABEL maintainer="choa.james@gmail.com"
 
 WORKDIR /app
