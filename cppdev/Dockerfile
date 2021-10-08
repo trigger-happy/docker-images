@@ -31,9 +31,6 @@ RUN mkdir -p /app /src
 VOLUME /src
 
 WORKDIR /src
-#RUN useradd -mU builder
-#USER builder
-#ENV PATH=$PATH:/home/builder/.local/bin
 
 RUN pip install conan && \
     conan remote add conan-transit https://conan-transit.bintray.com && \
