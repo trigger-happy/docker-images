@@ -55,6 +55,10 @@ matrix:
       env:
         - DOCKER_REPO=triggerhappy/wrk2
         - WORKING_DIR=wrk2
+    - os: linux
+      env:
+        - DOCKER_REPO=triggerhappy/esp-toolchain
+        - WORKING_DIR=esp-toolchain
 
 before_script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
