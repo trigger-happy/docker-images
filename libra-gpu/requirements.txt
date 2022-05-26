@@ -4,4 +4,4 @@ torch
 torchvision
 libra
 tensorflow==2.6.4
-tensorflow-gpu==2.6.4
+tensorflow-gpu==2.7.2
