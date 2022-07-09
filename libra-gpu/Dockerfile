@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.6.4-gpu-jupyter
+FROM tensorflow/tensorflow:2.7.2-gpu-jupyter
 LABEL maintainer="choa.james@gmail.com"
 
 ARG DEBIAN_FRONTEND=noninteractive
