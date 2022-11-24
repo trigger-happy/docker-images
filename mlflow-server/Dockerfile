@@ -1,6 +1,6 @@
 FROM python:3.10.0-buster as base
 
-ENV BACKEND_STORE_URI=file:///data/mlruns \
+ENV BACKEND_STORE_URI=/data/mlruns \
     HOST=0.0.0.0 \
     PORT=5000 \
     DEFAULT_ARTIFACT_ROOT=/data/artifacts \
