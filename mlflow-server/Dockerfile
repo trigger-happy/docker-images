@@ -1,11 +1,12 @@
 FROM python:3.10.0-buster as base
 
-ENV BACKEND_STORE_URI=file:///data/mlruns \
-    HOST=0.0.0.0 \
-    PORT=5000 \
-    DEFAULT_ARTIFACT_ROOT=/data/artifacts \
-    WORKERS=4 \
-    METRICS_DIR=/data/metrics
+ENV MLFLOW_BACKEND_STORE_URI=file:///data/mlruns \
+    MLFLOW_HOST=0.0.0.0 \
+    MLFLOW_PORT=5000 \
+    MLFLOW_DEFAULT_ARTIFACT_ROOT=/data/artifacts \
+    MLFLOW_WORKERS=4 \
+    MLFLOW_REGISTRY_STORE_URI=file:///data/registry \
+    MLFLOW_EXPOSE_PROMETHEUS=/data/metrics
 
 RUN useradd -mU mlflow
 
