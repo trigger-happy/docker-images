@@ -5,8 +5,10 @@ ENV MLFLOW_BACKEND_STORE_URI=file:///data/mlruns \
     MLFLOW_PORT=5000 \
     MLFLOW_DEFAULT_ARTIFACT_ROOT=/data/artifacts \
     MLFLOW_WORKERS=4 \
-    MLFLOW_REGISTRY_STORE_URI=file:///data/registry \
+    MLFLOW_REGISTRY_STORE_URI=file:////data/mlflow.db \
     MLFLOW_EXPOSE_PROMETHEUS=/data/metrics
+
+RUN apt -y update && apt -y install sqlite3
 
 RUN useradd -mU mlflow
 
