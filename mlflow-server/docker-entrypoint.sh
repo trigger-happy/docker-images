@@ -6,4 +6,4 @@ if [ ! -f /data/mlflow.db ]; then
   sqlite3 /data/mlflow.db "VACUUM;"
 fi
 
-exec mlflow server
+exec mlflow server --serve-artifacts

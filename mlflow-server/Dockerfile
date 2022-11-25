@@ -1,11 +1,12 @@
 FROM python:3.10.0-buster as base
 
-ENV MLFLOW_BACKEND_STORE_URI=file:///data/mlruns \
+ENV MLFLOW_BACKEND_STORE_URI=sqlite:////data/mlflow.db \
     MLFLOW_HOST=0.0.0.0 \
     MLFLOW_PORT=5000 \
-    MLFLOW_DEFAULT_ARTIFACT_ROOT=/data/artifacts \
+    MLFLOW_DEFAULT_ARTIFACT_ROOT=mlflow-artifacts:/ \
+    MLFLOW_ARTIFACTS_DESTINATION=/data/mlartifacts \
     MLFLOW_WORKERS=4 \
-    MLFLOW_REGISTRY_STORE_URI=file:////data/mlflow.db \
+    MLFLOW_REGISTRY_STORE_URI=sqlite:////data/mlflow.db \
     MLFLOW_EXPOSE_PROMETHEUS=/data/metrics
 
 RUN apt -y update && apt -y install sqlite3
