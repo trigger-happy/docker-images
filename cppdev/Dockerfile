@@ -1,7 +1,7 @@
-FROM fedora:34 as base
+FROM fedora:37 as base
 LABEL maintainer="choa.james@gmail.com"
 
-ARG VCPKG_VERSION=2021.05.12
+ARG VCPKG_VERSION=2023.04.15
 
 RUN dnf -y update
 
