@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.4.2-runtime-ubuntu20.04
+FROM nvidia/cuda:12.1.1-runtime-ubuntu22.04
 LABEL maintainer="choa.james@gmail.com"
 
 ENV LC_ALL=C.UTF-8 \
