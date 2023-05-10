@@ -29,10 +29,6 @@ matrix:
         - WORKING_DIR=wg
     - os: linux
       env:
-        - DOCKER_REPO=triggerhappy/docker-buildx
-        - WORKING_DIR=docker-buildx
-    - os: linux
-      env:
         - DOCKER_REPO=triggerhappy/cuda-python
         - WORKING_DIR=cuda-python
     - os: linux
