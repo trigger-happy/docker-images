@@ -37,10 +37,6 @@ matrix:
         - WORKING_DIR=libra-gpu
     - os: linux
       env:
-        - DOCKER_REPO=triggerhappy/k8s-tools
-        - WORKING_DIR=k8s-tools
-    - os: linux
-      env:
         - DOCKER_REPO=triggerhappy/http-benchmarking
         - WORKING_DIR=http-benchmarking
     - os: linux
