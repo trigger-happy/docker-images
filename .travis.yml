@@ -33,10 +33,6 @@ matrix:
         - WORKING_DIR=cuda-python
     - os: linux
       env:
-        - DOCKER_REPO=triggerhappy/libra-gpu
-        - WORKING_DIR=libra-gpu
-    - os: linux
-      env:
         - DOCKER_REPO=triggerhappy/http-benchmarking
         - WORKING_DIR=http-benchmarking
     - os: linux
