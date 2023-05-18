@@ -35,8 +35,8 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git && \
     mkdir -p models && \
     chown -R webui:webui /home/webui
 
-COPY docker-entrypoint.sh /home/webui/docker-entrypoint.sh
-RUN chown webui:webui /home/webui/docker-entrypoint.sh
+COPY --chown=webui docker-entrypoint.sh /home/webui/docker-entrypoint.sh
+COPY --chown=webui styles.csv /home/webui/stable-diffusion-webui/
 
 USER webui
 
@@ -45,6 +45,7 @@ VOLUME /home/webui/stable-diffusion-webui/extensions
 VOLUME /home/webui/stable-diffusion-webui/localizations
 VOLUME /home/webui/stable-diffusion-webui/embeddings
 VOLUME /home/webui/stable-diffusion-webui/repositories
+VOLUME /home/webui/stable-diffusion-webui/outputs
 
 EXPOSE 7861
 
