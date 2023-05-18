@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cd stable-diffusion-webui
 cp -rf packaged_models/* models/
