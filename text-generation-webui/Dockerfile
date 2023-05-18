@@ -37,7 +37,7 @@ RUN git clone https://github.com/oobabooga/text-generation-webui.git && \
     cd repositories && \
     pip uninstall quant_cuda && \
     rm -rf GPTQ-for-LLaMA && \
-    git clone https://github.com/qwopqwop200/GPTQ-for-LLaMa -b fastest-inference-4bit && \
+    git clone https://github.com/qwopqwop200/GPTQ-for-LLaMa.git -b cuda && \
     cd GPTQ-for-LLaMa && \
     pip install -r requirements.txt && \
     python setup_cuda.py install && \
