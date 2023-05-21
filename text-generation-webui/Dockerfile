@@ -41,6 +41,7 @@ RUN git clone https://github.com/oobabooga/text-generation-webui.git && \
     cd GPTQ-for-LLaMa && \
     pip install -r requirements.txt && \
     python setup_cuda.py install && \
+    pip3 install --upgrade accelerate transformers[torch] && \
     chown -R webui:webui /home/webui
 
 COPY docker-entrypoint.sh /home/webui/docker-entrypoint.sh
