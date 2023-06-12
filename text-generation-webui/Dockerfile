@@ -58,6 +58,6 @@ VOLUME /home/webui/text-generation-webui/loras
 VOLUME /home/webui/text-generation-webui/prompts
 VOLUME /home/webui/text-generation-webui/softprompts
 
-EXPOSE 8080
+EXPOSE 8080 5001
 
 ENTRYPOINT ["/home/webui/docker-entrypoint.sh"]
