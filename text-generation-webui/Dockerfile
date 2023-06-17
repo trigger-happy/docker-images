@@ -11,6 +11,7 @@ RUN apt -y update && \
       python3-pip \
       build-essential \
       bash \
+      ninja-build \
       git && \
     apt -y clean all && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
@@ -24,7 +25,7 @@ ENV LC_ALL=C.UTF-8 \
     GPUMEMORY=23Gib \
     CPUMEMORY=64Gib \
     THREADS=16 \
-    WEBUI_REF=19f78684e6d32d43cd5ce3ae82d6f2216421b9ae
+    WEBUI_REF=b27f83c0e9deb1abe2e02a6ad308dd48c57c0f88
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -35,6 +36,9 @@ RUN git clone https://github.com/oobabooga/text-generation-webui.git && \
     pip3 install -r requirements.txt && \
     mkdir repositories && \
     cd repositories && \
+    git clone https://github.com/turboderp/exllama && \
+    pip install --pre torch --index-url https://download.pytorch.org/whl/nightly/cu118 && \
+    pip install safetensors sentencepiece ninja && \
     pip uninstall quant_cuda && \
     rm -rf GPTQ-for-LLaMA && \
     git clone https://github.com/qwopqwop200/GPTQ-for-LLaMa.git -b cuda && \
