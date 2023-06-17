@@ -25,12 +25,13 @@ ENV LC_ALL=C.UTF-8 \
     GPUMEMORY=23Gib \
     CPUMEMORY=64Gib \
     THREADS=16 \
-    WEBUI_REF=b27f83c0e9deb1abe2e02a6ad308dd48c57c0f88
+    WEBUI_REPO=https://github.com/trigger-happy/text-generation-webui.git \
+    WEBUI_REF=f5d72f63ec834b76bd671be811dad424026d7875
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
 
-RUN git clone https://github.com/oobabooga/text-generation-webui.git && \
+RUN git clone $WEBUI_REPO && \
     cd text-generation-webui && \
     git checkout $WEBUI_REF && \
     pip3 install -r requirements.txt && \
@@ -44,6 +45,7 @@ RUN git clone https://github.com/oobabooga/text-generation-webui.git && \
     git clone https://github.com/qwopqwop200/GPTQ-for-LLaMa.git -b cuda && \
     cd GPTQ-for-LLaMa && \
     sed -i 's/0.3.0/0.3.1/g' requirements.txt && \
+    pip install accelerate==0.20.3 && \
     pip install -r requirements.txt && \
     python setup_cuda.py install && \
     cd .. && \
