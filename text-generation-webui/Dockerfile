@@ -26,7 +26,7 @@ ENV LC_ALL=C.UTF-8 \
     CPUMEMORY=64Gib \
     THREADS=16 \
     WEBUI_REPO=https://github.com/trigger-happy/text-generation-webui.git \
-    WEBUI_REF=f5d72f63ec834b76bd671be811dad424026d7875
+    WEBUI_REF=973741c244d73de9a4b05d715a1f5487995936db
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
