@@ -52,6 +52,8 @@ RUN git clone $WEBUI_REPO && \
     git clone https://github.com/johnsmith0031/alpaca_lora_4bit && \
     pip install git+https://github.com/sterlind/GPTQ-for-LLaMa.git@lora_4bit && \
     pip3 install --upgrade accelerate transformers[torch] && \
+    pip3 install 'jupyterlab<4.0' jupyter_ai && \
+    mkdir /home/webui/jupyter && \
     chown -R webui:webui /home/webui
 
 COPY docker-entrypoint.sh /home/webui/docker-entrypoint.sh
@@ -64,6 +66,6 @@ VOLUME /home/webui/text-generation-webui/loras
 VOLUME /home/webui/text-generation-webui/prompts
 VOLUME /home/webui/text-generation-webui/softprompts
 
-EXPOSE 8080 5001
+EXPOSE 8080 5001 8888
 
 ENTRYPOINT ["/home/webui/docker-entrypoint.sh"]
