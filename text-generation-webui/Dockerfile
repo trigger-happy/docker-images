@@ -56,8 +56,8 @@ RUN git clone $WEBUI_REPO && \
     mkdir /home/webui/jupyter && \
     chown -R webui:webui /home/webui
 
-COPY docker-entrypoint.sh /home/webui/docker-entrypoint.sh
-RUN chown webui:webui /home/webui/docker-entrypoint.sh
+COPY --chown=webui:webui docker-entrypoint.sh /home/webui/docker-entrypoint.sh
+COPY --chown=webui:webui settings.yaml /home/webui/text-generation-webui/settings.yaml
 
 USER webui
 
