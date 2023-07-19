@@ -9,6 +9,7 @@ RUN apt -y update && \
       nvidia-cuda-toolkit \
       python3 \
       python3-pip \
+      python3-venv \
       build-essential \
       bash \
       ninja-build \
