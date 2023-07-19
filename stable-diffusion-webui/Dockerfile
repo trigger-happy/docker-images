@@ -21,7 +21,7 @@ WORKDIR /home/webui
 ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8 \
     PORT=7861 \
-    WEBUI_REF=v1.4.0
+    WEBUI_REF=v1.5.0-RC
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -30,6 +30,7 @@ RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git && \
     cd stable-diffusion-webui && \
     git checkout $WEBUI_REF && \
     pip3 install -r requirements.txt && \
+    pip3 install xformers && \
     python launch.py --exit --skip-torch-cuda-test && \
     mv models packaged_models && \
     mkdir -p models && \
