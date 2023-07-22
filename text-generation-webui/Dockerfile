@@ -27,7 +27,7 @@ ENV LC_ALL=C.UTF-8 \
     CPUMEMORY=64Gib \
     THREADS=16 \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=0e6295886d2d0e9309c8223201e8a4bd55e4735c
+    WEBUI_REF=63ece46213483b9b2692a9e4299cf3cd0ed7adb2
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
