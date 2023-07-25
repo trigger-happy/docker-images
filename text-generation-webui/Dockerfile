@@ -13,6 +13,7 @@ RUN apt -y update && \
       build-essential \
       bash \
       ninja-build \
+      neovim \
       git && \
     apt -y clean all && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
@@ -27,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     CPUMEMORY=64Gib \
     THREADS=16 \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=63ece46213483b9b2692a9e4299cf3cd0ed7adb2
+    WEBUI_REF=08c622df2e26811440f6b3311dff3553ba20dc86
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -45,8 +46,6 @@ RUN git clone $WEBUI_REPO && \
     rm -rf GPTQ-for-LLaMA && \
     git clone https://github.com/qwopqwop200/GPTQ-for-LLaMa.git -b cuda && \
     cd GPTQ-for-LLaMa && \
-    sed -i 's/0.3.0/0.3.1/g' requirements.txt && \
-    pip install accelerate==0.20.3 && \
     pip install -r requirements.txt && \
     python setup_cuda.py install && \
     cd .. && \
