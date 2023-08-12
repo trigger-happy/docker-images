@@ -28,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     CPUMEMORY=64Gib \
     THREADS=16 \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=d6314fd5394bbfe2edd9030d953892dcfc4de105
+    WEBUI_REF=a4e48cbdb67b50cc174c8e09704e54472b059aa2
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -58,6 +58,7 @@ RUN git clone $WEBUI_REPO && \
 
 COPY --chown=webui:webui docker-entrypoint.sh /home/webui/docker-entrypoint.sh
 COPY --chown=webui:webui settings.yaml /home/webui/text-generation-webui/settings.yaml
+COPY --chown=webui:webui OpenOrca.yaml /home/webui/text-generation-webui/instruction-templates/OpenOrca.yaml
 
 USER webui
 
