@@ -59,6 +59,7 @@ RUN git clone $WEBUI_REPO && \
 COPY --chown=webui:webui docker-entrypoint.sh /home/webui/docker-entrypoint.sh
 COPY --chown=webui:webui settings.yaml /home/webui/text-generation-webui/settings.yaml
 COPY --chown=webui:webui OpenOrca.yaml /home/webui/text-generation-webui/instruction-templates/OpenOrca.yaml
+COPY --chown=webui:webui ChatML.yaml /home/webui/text-generation-webui/instruction-templates/ChatML.yaml
 
 USER webui
 

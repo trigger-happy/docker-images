@@ -1,0 +1,4 @@
+user: "<|im_start|>user"
+bot: "<|im_start|>assistant"
+turn_template: "<|user|>\n<|user-message|><|im_end|>\n<|bot|><|bot-message|>"
+context: "<|im_start|>system\nA conversation between a user and an LLM-based AI assistant. The assistant gives helpful and honest answers.<|im_end|>"
