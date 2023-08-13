@@ -60,6 +60,8 @@ COPY --chown=webui:webui docker-entrypoint.sh /home/webui/docker-entrypoint.sh
 COPY --chown=webui:webui settings.yaml /home/webui/text-generation-webui/settings.yaml
 COPY --chown=webui:webui OpenOrca.yaml /home/webui/text-generation-webui/instruction-templates/OpenOrca.yaml
 COPY --chown=webui:webui ChatML.yaml /home/webui/text-generation-webui/instruction-templates/ChatML.yaml
+COPY --chown=webui:webui Blank.yaml /home/webui/text-generation-webui/instruction-templates/Blank.yaml
+COPY --chown=webui:webui Vicuna-Short.yaml /home/webui/text-generation-webui/instruction-templates/Vicuna-Short.yaml
 
 USER webui
 
