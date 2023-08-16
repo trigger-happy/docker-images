@@ -1,4 +1,4 @@
 user: "### Instruction:"
 bot: "### Response:"
-turn_template: "<|user|>\n\n<|user-message|>\n\n<|bot|>\n<|bot-message|>\n\n"
+turn_template: "<|user|>\n\n<|user-message|>\n\n<|bot|> <|bot-message|>\n\n"
 context: ""
