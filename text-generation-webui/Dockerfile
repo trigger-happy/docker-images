@@ -41,7 +41,7 @@ RUN git clone $WEBUI_REPO && \
     cd repositories && \
     git clone https://github.com/turboderp/exllama && \
     pip install --pre torch --index-url https://download.pytorch.org/whl/nightly/cu118 && \
-    pip install safetensors sentencepiece ninja sentence_transformers && \
+    pip install tiktoken SpeechRecognition safetensors sentencepiece ninja sentence_transformers && \
     pip uninstall quant_cuda && \
     rm -rf GPTQ-for-LLaMA && \
     git clone https://github.com/qwopqwop200/GPTQ-for-LLaMa.git -b cuda && \
