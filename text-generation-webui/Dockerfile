@@ -28,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     CPUMEMORY=64Gib \
     THREADS=16 \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=ff5d3d2d092af726edbfd93ef774578416c4b2d2
+    WEBUI_REF=7a3ca2c68f1ca49ac4e4b62f016718556fd3805c
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -52,7 +52,7 @@ RUN git clone $WEBUI_REPO && \
     git clone https://github.com/johnsmith0031/alpaca_lora_4bit && \
     pip install git+https://github.com/sterlind/GPTQ-for-LLaMa.git@lora_4bit && \
     pip3 install --upgrade accelerate transformers[torch] && \
-    pip3 install 'jupyterlab<4.0' jupyter_ai && \
+    pip3 install 'jupyterlab' && \
     mkdir /home/webui/jupyter && \
     chown -R webui:webui /home/webui
 
