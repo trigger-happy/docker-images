@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.2.0-devel-ubuntu22.04
 LABEL maintainer="choa.james@gmail.com"
 
 RUN useradd -mU webui
@@ -28,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     CPUMEMORY=64Gib \
     THREADS=16 \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=7a3ca2c68f1ca49ac4e4b62f016718556fd3805c
+    WEBUI_REF=7d3201923bae5a070b107794bd364bb3478b7788
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
