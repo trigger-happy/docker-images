@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.2.0-devel-ubuntu22.04
+FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
 LABEL maintainer="choa.james@gmail.com"
 
 RUN useradd -mU webui
@@ -28,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     CPUMEMORY=64Gib \
     THREADS=16 \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=7d3201923bae5a070b107794bd364bb3478b7788
+    WEBUI_REF=7a3ca2c68f1ca49ac4e4b62f016718556fd3805c
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -36,11 +36,12 @@ ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
 RUN git clone $WEBUI_REPO && \
     cd text-generation-webui && \
     git checkout $WEBUI_REF && \
+    pip3 install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install 'triton==2.0.0' && \
     pip3 install -r requirements.txt && \
     mkdir repositories && \
     cd repositories && \
     git clone https://github.com/turboderp/exllama && \
-    pip install --pre torch --index-url https://download.pytorch.org/whl/nightly/cu118 && \
     pip install tiktoken SpeechRecognition safetensors sentencepiece ninja sentence_transformers && \
     pip uninstall quant_cuda && \
     rm -rf GPTQ-for-LLaMA && \
