@@ -15,17 +15,17 @@ WORKDIR /home/litellm
 ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8 \
     PORT=8080 \
-    LITELLM_PROXY_REPO=https://github.com/BerriAI/liteLLM-proxy.git \
-    LITELLM_PROXY_REF=b3f6be9260cc472015ecf6cc434d5583d1db59fd
+    LITELLM_PROXY_REPO=https://github.com/BerriAI/litellm.git \
+    LITELLM_PROXY_REF=v0.11.1
 
 RUN git clone $LITELLM_PROXY_REPO && \
-    cd liteLLM-proxy && \
+    cd litellm && \
     git checkout $LITELLM_PROXY_REF && \
     pip3 install --no-cache-dir -r requirements.txt && \
-    chown -R litellm:litellm /home/litellm/liteLLM-proxy
+    chown -R litellm:litellm /home/litellm/litellm
 
 USER litellm
-WORKDIR /home/litellm/liteLLM-proxy
+WORKDIR /home/litellm/litellm
 
 EXPOSE 8080
 
