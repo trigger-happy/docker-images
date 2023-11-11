@@ -64,7 +64,8 @@ COPY --chown=webui:webui ChatML.yaml /home/webui/text-generation-webui/instructi
 COPY --chown=webui:webui Blank.yaml /home/webui/text-generation-webui/instruction-templates/Blank.yaml
 COPY --chown=webui:webui Vicuna-Short.yaml /home/webui/text-generation-webui/instruction-templates/Vicuna-Short.yaml
 COPY --chown=webui:webui Alpaca-InstructOnly.yaml /home/webui/text-generation-webui/instruction-templates/Alpaca-InstructOnly.yaml
-COPY --chown=webui:webui Alpaca-InstructOnly.yaml /home/webui/text-generation-webui/instruction-templates/Zephyr.yaml
+COPY --chown=webui:webui Zephyr.yaml /home/webui/text-generation-webui/instruction-templates/Zephyr.yaml
+COPY --chown=webui:webui DeepSeek.yaml /home/webui/text-generation-webui/instruction-templates/DeepSeek.yaml
 
 USER webui
 
