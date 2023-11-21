@@ -39,6 +39,12 @@ RUN git clone $WEBUI_REPO && \
     pip3 install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118 && \
     pip3 install 'triton==2.0.0' && \
     pip3 install -r requirements.txt && \
+    cd extensions && \
+    git clone https://github.com/kanttouchthis/text_generation_webui_xtts.git && \
+    mv text_generation_webui_xtts coqui_tts && \
+    cd coqui_tts && \
+    pip3 install -r requirements.txt && \
+    cd ../.. && \
     mkdir repositories && \
     cd repositories && \
     git clone https://github.com/turboderp/exllama && \
