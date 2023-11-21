@@ -14,6 +14,9 @@ RUN apt -y update && \
       bash \
       ninja-build \
       neovim \
+      wget \
+      curl \
+      unzip \
       git && \
     apt -y clean all && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
@@ -35,6 +38,20 @@ RUN git clone $COMFYUI_REPO && \
     git checkout $COMFYUI_REF && \
     pip3 install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118 && \
     pip3 install -r requirements.txt && \
+    cd custom_nodes && \
+      git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git && \
+        cd comfyui_controlnet_aux && \
+        pip install -r requirements.txt && \
+        cd ../ && \
+      git clone https://github.com/ltdrdata/ComfyUI-Manager.git && \
+        cd ComfyUI-Manager && \
+        pip install -r requirements.txt && \
+        cd ../ && \
+      git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git && \
+      git clone https://github.com/Acly/comfyui-tooling-nodes.git && \
+      wget https://github.com/Acly/krita-ai-diffusion/releases/download/v0.1.0/ComfyUI_UltimateSDUpscale_6ea48202a76ccf5904ddfa85f826efa80dd50520.zip && \
+      unzip ComfyUI_UltimateSDUpscale_6ea48202a76ccf5904ddfa85f826efa80dd50520.zip && \
+      rm ComfyUI_UltimateSDUpscale_6ea48202a76ccf5904ddfa85f826efa80dd50520.zip && \
     chown -R comfyui:comfyui /home/comfyui
 
 COPY --chown=comfyui:comfyui docker-entrypoint.sh /home/comfyui/docker-entrypoint.sh
@@ -56,6 +73,7 @@ VOLUME /home/comfyui/ComfyUI/models/upscale_models
 VOLUME /home/comfyui/ComfyUI/models/vae
 VOLUME /home/comfyui/ComfyUI/models/vae_approx
 VOLUME /home/comfyui/ComfyUI/outputs
+VOLUME /home/comfyui/ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus/models
 
 EXPOSE 8188
 
