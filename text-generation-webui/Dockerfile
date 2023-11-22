@@ -44,6 +44,7 @@ RUN git clone $WEBUI_REPO && \
     mv text_generation_webui_xtts coqui_tts && \
     cd coqui_tts && \
     pip3 install -r requirements.txt && \
+    pip3 install TTS --no-dependencies && \
     cd ../.. && \
     mkdir repositories && \
     cd repositories && \
