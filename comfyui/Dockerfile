@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.1.0-devel-ubuntu22.04
 LABEL maintainer="choa.james@gmail.com"
 
 RUN useradd -mU comfyui
@@ -28,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8 \
     PORT=8188 \
     COMFYUI_REPO=https://github.com/comfyanonymous/ComfyUI.git \
-    COMFYUI_REF=11b404766e88e7609f6eab7e6784380374eb6c65
+    COMFYUI_REF=39e75862b248a20e8233ccee743ba5b2e977cdcf
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -36,7 +36,7 @@ ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
 RUN git clone $COMFYUI_REPO && \
     cd ComfyUI && \
     git checkout $COMFYUI_REF && \
-    pip3 install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install torch torchvision torchaudio && \
     pip3 install -r requirements.txt && \
     cd custom_nodes && \
       git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git && \
