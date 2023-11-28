@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.8.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
 LABEL maintainer="choa.james@gmail.com"
 
 RUN useradd -mU webui
@@ -28,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     CPUMEMORY=64Gib \
     THREADS=16 \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=7a3ca2c68f1ca49ac4e4b62f016718556fd3805c
+    WEBUI_REF=51add248c8a7080c3220ce16012a9f11e71f69ac
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -36,8 +36,8 @@ ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
 RUN git clone $WEBUI_REPO && \
     cd text-generation-webui && \
     git checkout $WEBUI_REF && \
-    pip3 install torch==2.0.1+cu118 torchvision==0.15.2+cu118 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118 && \
-    pip3 install 'triton==2.0.0' && \
+    pip3 install torch torchvision torchaudio sse-starlette && \
+    pip3 install 'triton' && \
     pip3 install -r requirements.txt && \
     cd extensions && \
     git clone https://github.com/kanttouchthis/text_generation_webui_xtts.git && \
@@ -52,13 +52,10 @@ RUN git clone $WEBUI_REPO && \
     pip install tiktoken SpeechRecognition safetensors sentencepiece ninja sentence_transformers && \
     pip uninstall quant_cuda && \
     rm -rf GPTQ-for-LLaMA && \
-    git clone https://github.com/qwopqwop200/GPTQ-for-LLaMa.git -b cuda && \
+    git clone --depth=1 https://github.com/oobabooga/GPTQ-for-LLaMa && \
     cd GPTQ-for-LLaMa && \
     pip install -r requirements.txt && \
     python setup_cuda.py install && \
-    cd .. && \
-    git clone https://github.com/johnsmith0031/alpaca_lora_4bit && \
-    pip install git+https://github.com/sterlind/GPTQ-for-LLaMa.git@lora_4bit && \
     pip3 install --upgrade accelerate transformers[torch] && \
     pip3 install 'jupyterlab' && \
     mkdir /home/webui/jupyter && \
