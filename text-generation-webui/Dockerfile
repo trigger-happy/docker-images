@@ -28,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     CPUMEMORY=64Gib \
     THREADS=16 \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=51add248c8a7080c3220ce16012a9f11e71f69ac
+    WEBUI_REF=443be391f2a7cee8402d9a58203dbf6511ba288c
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -40,11 +40,10 @@ RUN git clone $WEBUI_REPO && \
     pip3 install 'triton' && \
     pip3 install -r requirements.txt && \
     cd extensions && \
-    git clone https://github.com/kanttouchthis/text_generation_webui_xtts.git && \
-    mv text_generation_webui_xtts coqui_tts && \
-    cd coqui_tts && \
-    pip3 install -r requirements.txt && \
-    pip3 install TTS --no-dependencies && \
+    git clone https://github.com/erew123/alltalk_tts && \
+    cd alltalk_tts && \
+    pip install -r requirements_nvidia.txt && \
+    pip install deepspeed && \
     cd ../.. && \
     mkdir repositories && \
     cd repositories && \
@@ -70,6 +69,7 @@ COPY --chown=webui:webui Vicuna-Short.yaml /home/webui/text-generation-webui/ins
 COPY --chown=webui:webui Alpaca-InstructOnly.yaml /home/webui/text-generation-webui/instruction-templates/Alpaca-InstructOnly.yaml
 COPY --chown=webui:webui Zephyr.yaml /home/webui/text-generation-webui/instruction-templates/Zephyr.yaml
 COPY --chown=webui:webui DeepSeek.yaml /home/webui/text-generation-webui/instruction-templates/DeepSeek.yaml
+COPY --chown=webui:webui min-p-custom.yaml /home/webui/text-generation-webui/presets/min-p-custom.yaml
 
 USER webui
 
