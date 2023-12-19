@@ -27,8 +27,9 @@ ENV LC_ALL=C.UTF-8 \
     GPUMEMORY=23Gib \
     CPUMEMORY=64Gib \
     THREADS=16 \
+    EXTENSIONS="openai alltalk_tts" \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=7be09836fc721e6f23cf1cc27523c92185b20d8a
+    WEBUI_REF=b28020a9e444ce9a3a872b7b507d771b8e653198
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
