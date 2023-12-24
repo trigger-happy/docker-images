@@ -29,7 +29,7 @@ ENV LC_ALL=C.UTF-8 \
     THREADS=16 \
     EXTENSIONS="openai alltalk_tts" \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=b28020a9e444ce9a3a872b7b507d771b8e653198
+    WEBUI_REF=4b25acf58f78ee8821fc5bf325f602583bfa513f
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -70,6 +70,7 @@ COPY --chown=webui:webui Vicuna-Short.yaml /home/webui/text-generation-webui/ins
 COPY --chown=webui:webui Alpaca-InstructOnly.yaml /home/webui/text-generation-webui/instruction-templates/Alpaca-InstructOnly.yaml
 COPY --chown=webui:webui Zephyr.yaml /home/webui/text-generation-webui/instruction-templates/Zephyr.yaml
 COPY --chown=webui:webui DeepSeek.yaml /home/webui/text-generation-webui/instruction-templates/DeepSeek.yaml
+COPY --chown=webui:webui DeepSeek.yaml /home/webui/text-generation-webui/instruction-templates/OpenChat-Correct.yaml
 COPY --chown=webui:webui min-p-custom.yaml /home/webui/text-generation-webui/presets/min-p-custom.yaml
 
 USER webui
