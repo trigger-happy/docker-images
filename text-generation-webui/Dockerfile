@@ -70,7 +70,8 @@ COPY --chown=webui:webui Vicuna-Short.yaml /home/webui/text-generation-webui/ins
 COPY --chown=webui:webui Alpaca-InstructOnly.yaml /home/webui/text-generation-webui/instruction-templates/Alpaca-InstructOnly.yaml
 COPY --chown=webui:webui Zephyr.yaml /home/webui/text-generation-webui/instruction-templates/Zephyr.yaml
 COPY --chown=webui:webui DeepSeek.yaml /home/webui/text-generation-webui/instruction-templates/DeepSeek.yaml
-COPY --chown=webui:webui DeepSeek.yaml /home/webui/text-generation-webui/instruction-templates/OpenChat-Correct.yaml
+COPY --chown=webui:webui OpenChat-Correct.yaml /home/webui/text-generation-webui/instruction-templates/OpenChat-Correct.yaml
+COPY --chown=webui:webui User-Assistant.yaml /home/webui/text-generation-webui/instruction-templates/User-Assistant.yaml
 COPY --chown=webui:webui min-p-custom.yaml /home/webui/text-generation-webui/presets/min-p-custom.yaml
 
 USER webui
