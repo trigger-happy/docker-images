@@ -14,7 +14,8 @@ RUN apt -y update && \
       bash \
       ninja-build \
       neovim \
-      git && \
+      git \
+      git-lfs && \
     apt -y clean all && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
     update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 10
@@ -29,7 +30,7 @@ ENV LC_ALL=C.UTF-8 \
     THREADS=16 \
     EXTENSIONS="openai alltalk_tts" \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=4b25acf58f78ee8821fc5bf325f602583bfa513f
+    WEBUI_REF=3fd707380868ad6a2ba57aaed4c96799c2441d99
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
