@@ -1,0 +1,5 @@
+jupyterlab
+jupyterlab_widgets
+jupyter_ai
+jupyterlab-vim
+jupyterlab-git
