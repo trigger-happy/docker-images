@@ -28,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8 \
     PORT=8188 \
     COMFYUI_REPO=https://github.com/comfyanonymous/ComfyUI.git \
-    COMFYUI_REF=39e75862b248a20e8233ccee743ba5b2e977cdcf
+    COMFYUI_REF=d1533d9c0f1dde192f738ef1b745b15f49f41e02
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
