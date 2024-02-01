@@ -73,6 +73,7 @@ COPY --chown=webui:webui Zephyr.yaml /home/webui/text-generation-webui/instructi
 COPY --chown=webui:webui DeepSeek.yaml /home/webui/text-generation-webui/instruction-templates/DeepSeek.yaml
 COPY --chown=webui:webui OpenChat-Correct.yaml /home/webui/text-generation-webui/instruction-templates/OpenChat-Correct.yaml
 COPY --chown=webui:webui User-Assistant.yaml /home/webui/text-generation-webui/instruction-templates/User-Assistant.yaml
+COPY --chown=webui:webui Mistral-Custom.yaml /home/webui/text-generation-webui/instruction-templates/Mistral-Custom.yaml
 COPY --chown=webui:webui min-p-custom.yaml /home/webui/text-generation-webui/presets/min-p-custom.yaml
 
 USER webui

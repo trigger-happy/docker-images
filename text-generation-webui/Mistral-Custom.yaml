@@ -1,0 +1,4 @@
+user: "[INST]"
+bot: "[/INST]"
+turn_template: "<s> <|user|> <|user-message|><|bot|> <|bot-message|>\n"
+context: ""
