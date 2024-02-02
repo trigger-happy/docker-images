@@ -30,7 +30,7 @@ ENV LC_ALL=C.UTF-8 \
     THREADS=16 \
     EXTENSIONS="openai alltalk_tts" \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=837bd888e4cf239094d9b1cabcc342266fee11c0
+    WEBUI_REF=4f3fdf1b5ff6884b9899a3630b3ed9aae27decbf
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
