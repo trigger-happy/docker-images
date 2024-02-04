@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export PATH=$PATH:/usr/local/go/bin:/home/jupyter/go/bin
+export GOPATH=/home/jupyter/data/go
+export PATH=$PATH:/usr/local/go/bin:/home/jupyter/data/go/bin
 cd /home/jupyter/data
 
 # Check if .jupyterlab-venv dir already exists
@@ -19,4 +20,4 @@ if [ ! -d ".jupyterlab-venv" ]; then
 fi
 
 source .jupyterlab-venv/bin/activate
-jupyter lab --ip='*' --NotebookApp.token='' --NotebookApp.password=''
+jupyter lab --ip='*' --NotebookApp.token=$JUPYTER_TOKEN --NotebookApp.password=$JUPYTER_PASSWORD
