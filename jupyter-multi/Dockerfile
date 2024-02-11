@@ -42,7 +42,7 @@ RUN useradd -mU jupyter -s /bin/bash && \
 # Install Go
 RUN curl -JOL https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz && \
     tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz && \
-    rm go1.21.6.linux-amd64.tar.gz
+    rm go$GO_VERSION.linux-amd64.tar.gz
 
 USER jupyter
 WORKDIR /home/jupyter
