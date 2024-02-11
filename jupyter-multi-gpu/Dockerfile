@@ -1,9 +1,10 @@
-FROM ubuntu:22.04 as base
+FROM nvidia/cuda:12.3.1-devel-ubuntu22.04 as base
 LABEL maintainer="choa.james@gmail.com"
 
 ARG RUST_HOST=x86_64-unknown-linux-gnu \
     RUST_TARGET=x86_64-unknown-linux-gnu \
-    RUST_TOOLCHAIN=stable
+    RUST_TOOLCHAIN=stable \
+    GO_VERSION=1.21.6
 
 ENV PYTHONUNBUFFERED=1 \
     DEBIAN_FRONTEND=noninteractive \
@@ -25,6 +26,7 @@ RUN apt -y update && \
       lld \
       pkg-config \
       git \
+      ca-certificates \
       git-lfs && \
     apt -y clean all && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
@@ -36,6 +38,11 @@ RUN useradd -mU jupyter -s /bin/bash && \
     echo "%sudo   ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     mkdir -p /home/jupyter/data && \
     chown jupyter:jupyter /home/jupyter/data
+
+# Install Go
+RUN curl -JOL https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz && \
+    rm go1.21.6.linux-amd64.tar.gz
 
 USER jupyter
 WORKDIR /home/jupyter

@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.3.1-devel-ubuntu22.04 as base
+FROM ubuntu:22.04 as base
 LABEL maintainer="choa.james@gmail.com"
 
 ARG RUST_HOST=x86_64-unknown-linux-gnu \
@@ -56,6 +56,7 @@ RUN curl -JOL https://sh.rustup.rs && \
     mkdir -p ~/.local/share/bash-completion/completions && \
     ~/.cargo/bin/rustup completions bash > ~/.local/share/bash-completion/completions/rustup && \
     ~/.cargo/bin/rustup completions bash cargo > ~/.local/share/bash-completion/completions/cargo
+
 
 COPY --chown=jupyter:jupyter docker-entrypoint.sh /home/jupyter/docker-entrypoint.sh
 COPY --chown=jupyter:jupyter requirements.txt /home/jupyter/requirements.txt
