@@ -4,7 +4,7 @@ LABEL maintainer="choa.james@gmail.com"
 ARG RUST_HOST=x86_64-unknown-linux-gnu \
     RUST_TARGET=x86_64-unknown-linux-gnu \
     RUST_TOOLCHAIN=stable \
-    GO_VERSION=1.21.6
+    GO_VERSION=1.22.0
 
 ENV PYTHONUNBUFFERED=1 \
     DEBIAN_FRONTEND=noninteractive \
