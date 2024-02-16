@@ -8,6 +8,7 @@ ARG RUST_HOST=x86_64-unknown-linux-gnu \
 
 ENV PYTHONUNBUFFERED=1 \
     DEBIAN_FRONTEND=noninteractive \
+    VENV_LOCATION=/home/jupyter/data/.jupyterlab-venv \
     LC_ALL=C.UTF-8 \
     LANG=C.UTF-8
 

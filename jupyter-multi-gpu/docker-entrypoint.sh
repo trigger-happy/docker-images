@@ -5,7 +5,7 @@ export PATH=$PATH:/usr/local/go/bin:/home/jupyter/data/go/bin
 cd /home/jupyter/data
 
 # Check if .jupyterlab-venv dir already exists
-if [ ! -d ".jupyterlab-venv" ]; then
+if [ ! -d $VENV_LOCATION ]; then
   echo "Creating virtual environment..."
   python3 -m venv .jupyterlab-venv
   source .jupyterlab-venv/bin/activate
