@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.3.0-devel-ubuntu22.04
+FROM nvidia/cuda:12.3.1-devel-ubuntu22.04
 LABEL maintainer="choa.james@gmail.com"
 
 RUN useradd -mU comfyui
@@ -28,7 +28,7 @@ ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8 \
     PORT=8188 \
     COMFYUI_REPO=https://github.com/comfyanonymous/ComfyUI.git \
-    COMFYUI_REF=d1533d9c0f1dde192f738ef1b745b15f49f41e02
+    COMFYUI_REF=7f89cb48bf8200254cde1306ba60d10ca019264d
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
