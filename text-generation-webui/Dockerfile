@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
+FROM nvidia/cuda:12.3.1-devel-ubuntu22.04
 LABEL maintainer="choa.james@gmail.com"
 
 RUN useradd -mU webui
@@ -30,7 +30,7 @@ ENV LC_ALL=C.UTF-8 \
     THREADS=16 \
     EXTENSIONS="openai alltalk_tts" \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=0f134bf744acef2715edd7d39e76f865d8d83a19
+    WEBUI_REF=771c59290a72464a1666a1fd5971ccd9c96e4e11
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -50,6 +50,7 @@ RUN git clone $WEBUI_REPO && \
     mkdir repositories && \
     cd repositories && \
     git clone https://github.com/turboderp/exllama && \
+    git clone https://github.com/turboderp/exllamav2 && \
     pip install tiktoken SpeechRecognition safetensors sentencepiece ninja sentence_transformers && \
     pip uninstall quant_cuda && \
     rm -rf GPTQ-for-LLaMA && \
