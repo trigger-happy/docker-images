@@ -4,11 +4,11 @@ export GOPATH=/home/jupyter/data/go
 export PATH=$PATH:/usr/local/go/bin:/home/jupyter/data/go/bin
 cd /home/jupyter/data
 
-# Check if .jupyterlab-venv dir already exists
+# Check if $VENV_LOCATION dir already exists
 if [ ! -d $VENV_LOCATION ]; then
   echo "Creating virtual environment..."
-  python3 -m venv .jupyterlab-venv
-  source .jupyterlab-venv/bin/activate
+  python3 -m venv $VENV_LOCATION
+  source $VENV_LOCATION/bin/activate
   pip install --upgrade pip
   pip install -r ../requirements.txt
   ~/.cargo/bin/evcxr_jupyter --install
@@ -19,5 +19,5 @@ if [ ! -d $VENV_LOCATION ]; then
   gonb --install
 fi
 
-source .jupyterlab-venv/bin/activate
+source $VENV_LOCATION/bin/activate
 jupyter lab --ip='*' --NotebookApp.token=$JUPYTER_TOKEN --NotebookApp.password=$JUPYTER_PASSWORD

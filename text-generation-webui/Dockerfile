@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.3.1-devel-ubuntu22.04
+FROM nvidia/cuda:12.1.0-devel-ubuntu22.04
 LABEL maintainer="choa.james@gmail.com"
 
 RUN useradd -mU webui
@@ -38,9 +38,9 @@ ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
 RUN git clone $WEBUI_REPO && \
     cd text-generation-webui && \
     git checkout $WEBUI_REF && \
+    pip3 install -r requirements.txt && \
     pip3 install torch torchvision torchaudio sse-starlette && \
     pip3 install 'triton' && \
-    pip3 install -r requirements.txt && \
     cd extensions && \
     git clone https://github.com/erew123/alltalk_tts && \
     cd alltalk_tts && \
