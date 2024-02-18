@@ -38,8 +38,8 @@ ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
 RUN git clone $WEBUI_REPO && \
     cd text-generation-webui && \
     git checkout $WEBUI_REF && \
+    pip3 install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 sse-starlette && \
     pip3 install -r requirements.txt && \
-    pip3 install torch torchvision torchaudio sse-starlette && \
     pip3 install 'triton' && \
     cd extensions && \
     git clone https://github.com/erew123/alltalk_tts && \
