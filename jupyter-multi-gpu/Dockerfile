@@ -19,6 +19,7 @@ RUN apt -y update && \
       python3 \
       python3-pip \
       python3-venv \
+      python3-ipykernel \
       build-essential \
       bash \
       sudo \
@@ -28,6 +29,7 @@ RUN apt -y update && \
       pkg-config \
       git \
       ca-certificates \
+      ffmpeg \
       git-lfs && \
     apt -y clean all && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \

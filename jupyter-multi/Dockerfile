@@ -19,6 +19,7 @@ RUN apt -y update && \
       python3 \
       python3-pip \
       python3-venv \
+      python3-ipykernel \
       build-essential \
       bash \
       sudo \
