@@ -1,0 +1,4 @@
+user: "[INST] "
+bot: "[/INST] "
+turn_template: "<|user|><|user-message|><|bot|><|bot-message|>"
+context: "[INST] You are an AI assistant who responds in a terse manner.[/INST]"
