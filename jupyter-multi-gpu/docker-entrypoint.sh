@@ -7,7 +7,7 @@ cd /home/jupyter/data
 # Check if $VENV_LOCATION dir already exists
 if [ ! -d $VENV_LOCATION ]; then
   echo "Creating virtual environment..."
-  python3 -m venv $VENV_LOCATION --system-site-packages
+  python3 -m venv $VENV_LOCATION
   source $VENV_LOCATION/bin/activate
   pip install --upgrade pip
   pip install -r ../requirements.txt
