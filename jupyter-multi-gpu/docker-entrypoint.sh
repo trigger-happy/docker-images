@@ -20,4 +20,4 @@ if [ ! -d $VENV_LOCATION ]; then
 fi
 
 source $VENV_LOCATION/bin/activate
-jupyter lab --ip='*' --NotebookApp.token=$JUPYTER_TOKEN --NotebookApp.password=$JUPYTER_PASSWORD
+jupyter lab --ip='*' --ServerApp.token=$JUPYTER_TOKEN --ServerApp.password=$JUPYTER_PASSWORD
