@@ -30,7 +30,7 @@ ENV LC_ALL=C.UTF-8 \
     THREADS=16 \
     EXTENSIONS="openai alltalk_tts" \
     WEBUI_REPO=https://github.com/oobabooga/text-generation-webui.git \
-    WEBUI_REF=771c59290a72464a1666a1fd5971ccd9c96e4e11
+    WEBUI_REF=7cf1402bde48fd76af501d5efecb34227bf4d082
 
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
@@ -38,7 +38,7 @@ ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
 RUN git clone $WEBUI_REPO && \
     cd text-generation-webui && \
     git checkout $WEBUI_REF && \
-    pip3 install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 sse-starlette && \
+    pip3 install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 sse-starlette && \
     pip3 install -r requirements.txt && \
     pip3 install 'triton' && \
     cd extensions && \
