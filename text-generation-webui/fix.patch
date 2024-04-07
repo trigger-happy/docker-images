@@ -1,0 +1,18 @@
+diff --git a/modules/chat.py b/modules/chat.py
+index c8516c59..98108f61 100644
+--- a/modules/chat.py
++++ b/modules/chat.py
+@@ -633,8 +633,11 @@ def delete_history(unique_id, character, mode):
+ 
+ 
+ def replace_character_names(text, name1, name2):
+-    text = text.replace('{{user}}', name1).replace('{{char}}', name2)
+-    return text.replace('<USER>', name1).replace('<BOT>', name2)
++    if text:
++        text = text.replace('{{user}}', name1).replace('{{char}}', name2)
++        return text.replace('<USER>', name1).replace('<BOT>', name2)
++
++    return text
+ 
+ 
+ def generate_pfp_cache(character):

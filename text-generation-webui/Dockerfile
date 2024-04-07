@@ -35,9 +35,12 @@ ENV LC_ALL=C.UTF-8 \
 ARG TORCH_CUDA_ARCH_LIST="8.6+PTX" \
     CUDA_VISIBLE_DEVICES=1
 
+COPY --chown=webui:webui fix.patch /tmp/fix.patch
+
 RUN git clone $WEBUI_REPO && \
     cd text-generation-webui && \
     git checkout $WEBUI_REF && \
+    git apply /tmp/fix.patch && \
     pip3 install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 sse-starlette && \
     pip3 install -r requirements.txt && \
     pip3 install 'triton' && \
