@@ -44,7 +44,7 @@ RUN git clone $WEBUI_REPO && \
     cd extensions && \
     git clone https://github.com/erew123/alltalk_tts && \
     cd alltalk_tts && \
-    pip install -r requirements_nvidia.txt && \
+    pip install -r system/requirements/requirements_textgen.txt && \
     pip install deepspeed && \
     cd ../.. && \
     mkdir repositories && \
