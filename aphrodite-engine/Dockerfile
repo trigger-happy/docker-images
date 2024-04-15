@@ -1,6 +1,8 @@
 FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
 
-ENV HOME=/app/aphrodite-engine
+ENV HOME=/app/aphrodite-engine \
+    APHRODITE_REPO=https://github.com/PygmalionAI/aphrodite-engine.git \
+    APHRODITE_REF=f663d3fccc9b4f1cbe5ba4d33ae77cdf26ea1dc7
 
 WORKDIR $HOME
 
@@ -17,7 +19,10 @@ RUN ln -s /usr/bin/python3 /usr/bin/python
 
 RUN python3 -m pip install --no-cache-dir --upgrade pip
 
-RUN git clone https://github.com/PygmalionAI/aphrodite-engine.git /tmp/aphrodite-engine \
+RUN git clone $APHRODITE_REPO /tmp/aphrodite-engine \
+    && cd /tmp/aphrodite-engine \
+    && git checkout $APHRODITE_REF \
+    && cd $HOME \
     && mv /tmp/aphrodite-engine/* . \
     && rm -fr /tmp/aphrodite-engine \
     && chmod +x docker/entrypoint.sh
