@@ -1,8 +1,8 @@
-FROM nvidia/cuda:12.1.1-devel-ubuntu22.04
+FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
 
 ENV HOME=/app/aphrodite-engine \
     APHRODITE_REPO=https://github.com/PygmalionAI/aphrodite-engine.git \
-    APHRODITE_REF=f663d3fccc9b4f1cbe5ba4d33ae77cdf26ea1dc7
+    APHRODITE_REF=205c8e4106a9fc0cdc45102ea11b0eed80a807aa
 
 WORKDIR $HOME
 
