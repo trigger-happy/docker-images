@@ -1,10 +1,13 @@
 FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
 
 ENV HOME=/app/aphrodite-engine \
+    CUDA_HOME=/usr/local/cuda \
     APHRODITE_REPO=https://github.com/PygmalionAI/aphrodite-engine.git \
-    APHRODITE_REF=205c8e4106a9fc0cdc45102ea11b0eed80a807aa
+    APHRODITE_REF=0178b4d97682dc165ecba184e7db509776847e33
 
 WORKDIR $HOME
+
+RUN useradd -mU aphrodite
 
 # Upgrade OS Packages + Prepare Python Environment
 RUN set -eux; \
@@ -33,13 +36,16 @@ ENV CUDA_HOME=/usr/local/cuda
 ENV HF_HOME=/tmp
 ENV NUMBA_CACHE_DIR=$HF_HOME/numba_cache
 ENV MAX_JOBS=2
-ENV TORCH_CUDA_ARCH_LIST="6.1 7.0 7.5 8.0 8.6 8.9 9.0+PTX"
+ENV TORCH_CUDA_ARCH_LIST="8.0 8.6 8.9 9.0+PTX"
 RUN python3 -m pip install --no-cache-dir -e .
+RUN python3 -m pip install 'flash-attn>=2.5.8' --no-build-isolation
 
 # Entrypoint exec form doesn't do variable substitution automatically ($HOME)
 ENTRYPOINT ["/app/aphrodite-engine/docker/entrypoint.sh"]
 
 EXPOSE 7860
+
+RUN chown 1000:1000 ${HOME}
 
 USER 1000:0
 
