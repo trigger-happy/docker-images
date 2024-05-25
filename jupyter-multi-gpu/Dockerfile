@@ -29,6 +29,10 @@ RUN apt -y update && \
       pkg-config \
       git \
       ca-certificates \
+      libssl-dev \
+      htop \
+      btop \
+      tree \
       ffmpeg \
       git-lfs && \
     apt -y clean all && \

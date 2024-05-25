@@ -29,6 +29,10 @@ RUN apt -y update && \
       pkg-config \
       git \
       ca-certificates \
+      libssl-dev \
+      htop \
+      btop \
+      tree \
       git-lfs && \
     apt -y clean all && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
