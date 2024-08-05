@@ -37,7 +37,7 @@ ENV HF_HOME=/tmp
 ENV NUMBA_CACHE_DIR=$HF_HOME/numba_cache
 ENV MAX_JOBS=2
 ENV TORCH_CUDA_ARCH_LIST="8.0 8.6 8.9 9.0+PTX"
-RUN python3 -m pip install --no-cache-dir transformers
+RUN python3 -m pip install --no-cache-dir transformers exllamav2==0.1.8
 RUN python3 -m pip install --no-cache-dir -e .["ray"]
 RUN python3 -m pip install 'flash-attn>=2.5.8' --no-build-isolation
 
