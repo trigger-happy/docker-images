@@ -3,7 +3,7 @@ FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
 ENV HOME=/app/aphrodite-engine \
     CUDA_HOME=/usr/local/cuda \
     APHRODITE_REPO=https://github.com/PygmalionAI/aphrodite-engine.git \
-    APHRODITE_REF=0178b4d97682dc165ecba184e7db509776847e33
+    APHRODITE_REF=627dd869488aea30cb9aed4ed89195e5ea566941
 
 WORKDIR $HOME
 
@@ -28,7 +28,7 @@ RUN git clone $APHRODITE_REPO /tmp/aphrodite-engine \
     && cd $HOME \
     && mv /tmp/aphrodite-engine/* . \
     && rm -fr /tmp/aphrodite-engine \
-    && chmod +x docker/entrypoint.sh
+    && chmod +x entrypoint.sh
 
 # Export the CUDA_HOME variable correctly
 ENV CUDA_HOME=/usr/local/cuda
@@ -41,7 +41,7 @@ RUN python3 -m pip install --no-cache-dir -e .
 RUN python3 -m pip install 'flash-attn>=2.5.8' --no-build-isolation
 
 # Entrypoint exec form doesn't do variable substitution automatically ($HOME)
-ENTRYPOINT ["/app/aphrodite-engine/docker/entrypoint.sh"]
+ENTRYPOINT ["/app/aphrodite-engine/entrypoint.sh"]
 
 EXPOSE 7860
 
