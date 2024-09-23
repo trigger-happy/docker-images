@@ -34,6 +34,7 @@ RUN apt -y update && \
       btop \
       tree \
       ffmpeg \
+      tmux \
       git-lfs && \
     apt -y clean all && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
