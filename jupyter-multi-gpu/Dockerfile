@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.0-devel-ubuntu22.04 as base
+FROM nvidia/cuda:12.4.1-devel-ubuntu22.04 as base
 LABEL maintainer="choa.james@gmail.com"
 
 ARG RUST_HOST=x86_64-unknown-linux-gnu \
