@@ -16,7 +16,7 @@ ENV LC_ALL=C.UTF-8 \
     LANG=C.UTF-8 \
     PORT=8080 \
     LITELLM_PROXY_REPO=https://github.com/BerriAI/litellm.git \
-    LITELLM_PROXY_REF=d5e6777973f98ed13aec0859d72f465f6536c41d
+    LITELLM_PROXY_REF=b9280528d368aced49cb4d287c57cd0b46168cb6
 
 RUN git clone $LITELLM_PROXY_REPO && \
     cd litellm && \
