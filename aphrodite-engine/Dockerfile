@@ -3,7 +3,7 @@ FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
 ENV HOME=/app/aphrodite-engine \
     CUDA_HOME=/usr/local/cuda \
     APHRODITE_REPO=https://github.com/PygmalionAI/aphrodite-engine.git \
-    APHRODITE_REF=314fa7f7d9115bfc4cbdbb20e2ae802883cb1c59
+    APHRODITE_REF=b65449b5ad5d4bf75c25ccc064481d3fd0fe1ff2
 
 WORKDIR $HOME
 
@@ -14,7 +14,7 @@ RUN set -eux; \
     export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y bzip2 g++ git make python3-pip tzdata \
+    && apt-get install -y bzip2 g++ git make python3-pip tzdata libgl1-mesa-dev libglib2.0-0 \
     && rm -fr /var/lib/apt/lists/*
 
 # Alias python3 to python
