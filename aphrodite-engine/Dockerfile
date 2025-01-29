@@ -3,7 +3,7 @@ FROM nvidia/cuda:12.4.1-devel-ubuntu22.04
 ENV HOME=/app/aphrodite-engine \
     CUDA_HOME=/usr/local/cuda \
     APHRODITE_REPO=https://github.com/PygmalionAI/aphrodite-engine.git \
-    APHRODITE_REF=b65449b5ad5d4bf75c25ccc064481d3fd0fe1ff2
+    APHRODITE_REF=d44da0332ca2a3e7ba0c2886310badf65c7d640a
 
 WORKDIR $HOME
 
