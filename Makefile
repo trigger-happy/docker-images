@@ -17,5 +17,5 @@ $(DEPENDS): $(DOCKERFILES) Makefile
 sinclude $(DEPENDS)
 
 $(IMAGES): %:
-	docker build -t $(REGISTRY)/$@ $(subst :,/,$@)
+	docker build --network host -t $(REGISTRY)/$@ $(subst :,/,$@)
 	docker push $(REGISTRY)/$@
